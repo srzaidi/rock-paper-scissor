@@ -1,6 +1,5 @@
 function getComputerChoice(){
     let choice=Math.floor(Math.random()*3)
-    // console.log(choice)
     if(choice==0)
         return "Rock"
     else if(choice==1)
@@ -10,16 +9,19 @@ function getComputerChoice(){
 };
 
 function getHumanChoice(){
-    do {
-        number = Number(prompt("Enter your choice: 1 for Rock, 2 for Paper, 3 for Scissor"));
-    } while (![1, 2, 3].includes(number));
+    number = Number(prompt("Enter your choice: 1 for Rock, 2 for Paper, 3 for Scissor"));
     
     if(number==1)
         return "Rock"
     else if(number==2)
         return "Paper"
-    else
+    else if(number==3)
         return "Scissor"
+    else{
+        prompt("Enter valid value: 1 ,2 or 3")
+        return getHumanChoice();
+    }
+
 };
 
 let humanScore=0
@@ -34,37 +36,37 @@ function playRound(humanChoice, computerChoice){
     {
         console.log("You Win! Rock beats Scissor")
         humanScore+=1;
-        return
+        return;
     }
     else if(humanChoice=="Scissor" && computerChoice=="Paper")
         {
             console.log("You Win! Scissor beats Paper")
             humanScore+=1;
-            return
+            return;
         }
     else if(humanChoice=="Paper" && computerChoice=="Rock")
         {
             console.log("You Win! Paper beats Rock")
             humanScore+=1;
-            return
+            return;
         }
     else if(computerChoice=="Rock" && humanChoice=="Scissor")
     {
         console.log("You Lose! Rock beats Scissor")
         computerScore+=1;
-        return
+        return;
     }
     else if(computerChoice=="Scissor" && humanChoice=="Paper")
         {
             console.log("You Lose! Scissor beats Paper")
             computerScore+=1;
-            return
+            return;
         }
     else if(computerChoice=="Paper" && humanChoice=="Rock")
         {
             console.log("You Lose! Paper beats Rock")
             computerScore+=1;
-            return
+            return;
         }    
 };
 
@@ -89,4 +91,4 @@ function playGame(){
     return;
 };
 
-console.log(playGame())
+playGame();
